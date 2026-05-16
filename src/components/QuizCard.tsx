@@ -4,6 +4,7 @@ type Props = {
   question: string;
   correctAnswer: string;
   incorrectAnswers: string[];
+  choosen: boolean;
 };
 export default function QuizCard({
   question,
@@ -14,9 +15,9 @@ export default function QuizCard({
     <div className="quiz-card">
       <h2>{decode(question)}</h2>
       <div className="quiz-answers">
-        <button>{decode(correctAnswer)}</button>
-        <button>{decode(incorrectAnswers[0])}</button>
-        <button>{decode(incorrectAnswers[1])}</button>
+        <button className="wrong">{decode(correctAnswer)}</button>
+        <button className="choosen">{decode(incorrectAnswers[0])}</button>
+        <button className="correct">{decode(incorrectAnswers[1])}</button>
         <button>{decode(incorrectAnswers[2])}</button>
       </div>
     </div>

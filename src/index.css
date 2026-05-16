@@ -2,6 +2,7 @@
     --color-blue: #3d348b;
     --color-white: #e0e2db;
     --color-yellow: #e6af2e;
+    --color-green: #b4dc7f;
     --color-dark: #191716;
     --color-red: #95190c;
 
@@ -32,10 +33,24 @@
 }
 .quiz-answers button {
     color: var(--color-dark);
-    border: solid;
-    border-color: var(--color-white);
+    background-color: var(--color-white);
+    border: none;
     border-radius: 8px;
     cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0rem 0.7rem;
+}
+.quiz-answers .choosen {
+    color: var(--color-white);
+    background-color: var(--color-blue);
+}
+.quiz-answers .correct {
+    color: var(--color-dark);
+    background-color: var(--color-green);
+}
+.quiz-answers .wrong {
+    color: var(--color-white);
+    background-color: var(--color-red);
 }
 
 .quiz-submit {
