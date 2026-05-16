@@ -17,6 +17,7 @@
 
 .quiz-card {
     color: var(--color-white);
+    margin: 0rem 6rem;
 }
 .quiz-card h2 {
     color: var(--color-white);
@@ -34,12 +35,15 @@
 }
 
 .quiz-submit {
-    margin: 16px;
+    margin: 2rem;
 }
 
 .quiz-submit button {
     color: var(--color-white);
     background-color: var(--color-blue);
+    border: none;
     border-radius: 8px;
+    padding: 1rem;
     cursor: pointer;
+    font-size: 2rem;
 }

@@ -1,11 +1,24 @@
+import { useSuspenseQuery } from "@tanstack/react-query";
 import QuizCard from "./components/QuizCard";
+import { getQuiz } from "./api";
 
 function App() {
+  const { data } = useSuspenseQuery({
+    queryKey: ["question"],
+    queryFn: () => getQuiz(),
+  });
+
+  const quiz = data.results.map((item) => (
+    <QuizCard
+      question={item.question}
+      correctAnswer={item.correct_answer}
+      incorrectAnswers={item.incorrect_answers}
+    />
+  ));
+
   return (
     <div className="quiz">
-      <QuizCard question="Question 1?" />
-      <QuizCard question="Question 2?" />
-      <QuizCard question="Question 3?" />
+      {quiz}
       <div className="quiz-submit">
         <button>Check answers</button>
       </div>
