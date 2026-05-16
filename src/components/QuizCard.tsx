@@ -1,10 +1,10 @@
 import { decode } from "html-entities";
+import QuizQuestion from "./QuizQuestion";
 
 type Props = {
   question: string;
   correctAnswer: string;
   incorrectAnswers: string[];
-  choosen: boolean;
 };
 export default function QuizCard({
   question,
@@ -15,10 +15,10 @@ export default function QuizCard({
     <div className="quiz-card">
       <h2>{decode(question)}</h2>
       <div className="quiz-answers">
-        <button className="wrong">{decode(correctAnswer)}</button>
-        <button className="choosen">{decode(incorrectAnswers[0])}</button>
-        <button className="correct">{decode(incorrectAnswers[1])}</button>
-        <button>{decode(incorrectAnswers[2])}</button>
+        <QuizQuestion answer={correctAnswer} selected={true} />
+        <QuizQuestion answer={incorrectAnswers[0]} selected={false} />
+        <QuizQuestion answer={incorrectAnswers[1]} selected={false} />
+        <QuizQuestion answer={incorrectAnswers[2]} selected={false} />
       </div>
     </div>
   );

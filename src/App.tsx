@@ -13,7 +13,6 @@ function App() {
       question={item.question}
       correctAnswer={item.correct_answer}
       incorrectAnswers={item.incorrect_answers}
-      choosen={false}
     />
   ));
 
