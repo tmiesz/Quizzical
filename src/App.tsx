@@ -16,18 +16,21 @@ function App() {
     correctAnswer: item.correct_answer,
     incorrectAnswers: item.incorrect_answers,
     selected: null,
+    style: null,
     selectAnswer: selectAnswer,
   }));
   const [quiz, setQuiz] = useState(initializeQuiz);
 
   function selectAnswer(id: string) {
     setQuiz((prev) =>
-      prev.map((q) => (q.answerIds.includes(id) ? { ...q, selected: id } : q)),
+      prev.map((q) =>
+        q.answerIds.includes(id) ? { ...q, selected: id, style: "select" } : q,
+      ),
     );
   }
 
   function checkAnswers() {
-    setQuiz((prev) => prev.map((q) => ({ ...q, selected: null })));
+    setQuiz((prev) => prev.map((q) => ({ ...q, style: "correct" })));
   }
 
   return (
@@ -40,6 +43,7 @@ function App() {
           correctAnswer={item.correctAnswer}
           incorrectAnswers={item.incorrectAnswers}
           selected={item.selected}
+          style={item.style}
           selectAnswer={item.selectAnswer}
         />
       ))}

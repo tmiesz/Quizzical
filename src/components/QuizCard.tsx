@@ -8,6 +8,7 @@ export type QuizProps = {
   correctAnswer: string;
   incorrectAnswers: string[];
   selected: string | null;
+  style: "select" | "correct" | "wrong" | null;
   selectAnswer: (id: string) => void;
 };
 
@@ -17,6 +18,7 @@ export default function QuizCard({
   correctAnswer,
   incorrectAnswers,
   selected,
+  style,
   selectAnswer,
 }: QuizProps) {
   const numberOfAnswers = incorrectAnswers.length + 1;
@@ -32,7 +34,7 @@ export default function QuizCard({
         {Array.from({ length: numberOfAnswers }, (_, i) => (
           <button
             key={answerIds[i]}
-            className={clsx(selected === answerIds[i] ? "select" : "")}
+            className={clsx(selected === answerIds[i] ? style : "")}
             onClick={() => selectAnswer(answerIds[i])}
           >
             {i === correctAnswerPosition
