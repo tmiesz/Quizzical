@@ -26,6 +26,10 @@ function App() {
     );
   }
 
+  function checkAnswers() {
+    setQuiz((prev) => prev.map((q) => ({ ...q, selected: null })));
+  }
+
   return (
     <div className="quiz">
       {quiz.map((item) => (
@@ -39,7 +43,7 @@ function App() {
         />
       ))}
       <div className="quiz-submit">
-        <button>Check answers</button>
+        <button onClick={checkAnswers}>Check answers</button>
       </div>
     </div>
   );
