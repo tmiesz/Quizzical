@@ -19,6 +19,7 @@ export default function QuizCard({
   selectAnswer,
 }: QuizProps) {
   const numberOfAnswers = incorrectAnswers.length + 1;
+  const correctAnswerPosition = Math.floor(Math.random() * numberOfAnswers);
 
   return (
     <div className="quiz-card">
@@ -29,9 +30,9 @@ export default function QuizCard({
             className={clsx(selected === answerIds[i] ? "select" : "")}
             onClick={() => selectAnswer(answerIds[i])}
           >
-            {i === numberOfAnswers - 1
+            {i === correctAnswerPosition
               ? decode(correctAnswer)
-              : decode(incorrectAnswers[i])}
+              : decode(incorrectAnswers[i > correctAnswerPosition ? i - 1 : i])}
           </button>
         ))}
       </div>
