@@ -6,7 +6,7 @@ export type QuizProps = {
   answerIds: string[];
   question: string;
   correctAnswer: string;
-  incorrectAnswers: string[];
+  answers: string[];
   selected: string | null;
   style: "select" | "correct" | "wrong" | null;
   selectAnswer: (id: string) => void;
@@ -16,12 +16,12 @@ export default function QuizCard({
   answerIds,
   question,
   correctAnswer,
-  incorrectAnswers,
+  answers,
   selected,
   style,
   selectAnswer,
 }: QuizProps) {
-  const numberOfAnswers = incorrectAnswers.length + 1;
+  const numberOfAnswers = answers.length;
   const correctAnswerPosition = useMemo(
     () => Math.floor(Math.random() * numberOfAnswers),
     [],
@@ -39,7 +39,7 @@ export default function QuizCard({
           >
             {i === correctAnswerPosition
               ? decode(correctAnswer)
-              : decode(incorrectAnswers[i > correctAnswerPosition ? i - 1 : i])}
+              : decode(answers[i > correctAnswerPosition ? i - 1 : i])}
           </button>
         ))}
       </div>

@@ -11,10 +11,12 @@ function App() {
   });
 
   const initializeQuiz: QuizProps[] = data.results.map((item) => ({
-    answerIds: Array.from({ length: 4 }, () => uuidv4()),
+    answerIds: Array.from({ length: item.incorrect_answers.length + 1 }, () =>
+      uuidv4(),
+    ),
     question: item.question,
     correctAnswer: item.correct_answer,
-    incorrectAnswers: item.incorrect_answers,
+    answers: [...item.incorrect_answers, item.correct_answer],
     selected: null,
     style: null,
     selectAnswer: selectAnswer,
@@ -30,7 +32,11 @@ function App() {
   }
 
   function checkAnswers() {
-    setQuiz((prev) => prev.map((q) => ({ ...q, style: "correct" })));
+    setQuiz((prev) =>
+      prev.map((q) =>
+        q.answerIds ? { ...q, style: "correct" } : { ...q, style: "wrong" },
+      ),
+    );
   }
 
   return (
@@ -41,7 +47,7 @@ function App() {
           answerIds={item.answerIds}
           question={item.question}
           correctAnswer={item.correctAnswer}
-          incorrectAnswers={item.incorrectAnswers}
+          answers={item.answers}
           selected={item.selected}
           style={item.style}
           selectAnswer={item.selectAnswer}
