@@ -21,7 +21,6 @@ function App() {
   const [quiz, setQuiz] = useState(initializeQuiz);
 
   function selectAnswer(id: string) {
-    console.log(id);
     setQuiz((prev) =>
       prev.map((q) => (q.answerIds.includes(id) ? { ...q, selected: id } : q)),
     );
