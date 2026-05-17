@@ -40,7 +40,7 @@
     font-size: 0.9rem;
     padding: 0rem 0.7rem;
 }
-.quiz-answers .selected {
+.quiz-answers .select {
     color: var(--color-white);
     background-color: var(--color-blue);
 }
