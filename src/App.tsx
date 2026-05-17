@@ -34,6 +34,7 @@ function App() {
     <div className="quiz">
       {quiz.map((item) => (
         <QuizCard
+          key={item.question}
           answerIds={item.answerIds}
           question={item.question}
           correctAnswer={item.correctAnswer}

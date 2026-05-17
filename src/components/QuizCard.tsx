@@ -1,5 +1,6 @@
 import { decode } from "html-entities";
 import clsx from "clsx";
+import { useMemo } from "react";
 
 export type QuizProps = {
   answerIds: string[];
@@ -19,7 +20,10 @@ export default function QuizCard({
   selectAnswer,
 }: QuizProps) {
   const numberOfAnswers = incorrectAnswers.length + 1;
-  const correctAnswerPosition = Math.floor(Math.random() * numberOfAnswers);
+  const correctAnswerPosition = useMemo(
+    () => Math.floor(Math.random() * numberOfAnswers),
+    [],
+  );
 
   return (
     <div className="quiz-card">
@@ -27,6 +31,7 @@ export default function QuizCard({
       <div className="quiz-answers">
         {Array.from({ length: numberOfAnswers }, (_, i) => (
           <button
+            key={answerIds[i]}
             className={clsx(selected === answerIds[i] ? "select" : "")}
             onClick={() => selectAnswer(answerIds[i])}
           >
