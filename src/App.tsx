@@ -17,26 +17,14 @@ function App() {
   }));
   const [quiz, setQuiz] = useState(initializeQuiz);
 
-  function selectAnswer(id: string) {
-    let isCorrect = false;
-
+  function selectAnswer(answer: string) {
     setQuiz((prev) =>
-      prev.map((q) => {
-        if (q.answers.includes(id)) {
-          isCorrect = q.correctAnswer === id;
-
-          return {
-            ...q,
-            selected: id,
-            style: "select",
-          };
-        }
-
-        return q;
-      }),
+      prev.map((q) =>
+        q.answers.includes(answer)
+          ? { ...q, selected: answer, style: "select" }
+          : q,
+      ),
     );
-
-    return isCorrect;
   }
 
   function checkAnswers() {
