@@ -15,7 +15,12 @@ function App() {
     answers: [...item.incorrect_answers, item.correct_answer],
     selectAnswer: selectAnswer,
   }));
+
   const [quiz, setQuiz] = useState(initializeQuiz);
+
+  const concludeGame = quiz.every(
+    (q) => (q.selected && q.style === "correct") || q.style === "wrong",
+  );
 
   function selectAnswer(answer: string) {
     setQuiz((prev) =>
@@ -36,6 +41,10 @@ function App() {
     );
   }
 
+  function restartGame(): void {
+    setQuiz(initializeQuiz);
+  }
+
   return (
     <div className="quiz">
       {quiz.map((item) => (
@@ -49,9 +58,17 @@ function App() {
           selectAnswer={item.selectAnswer}
         />
       ))}
-      <div className="quiz-submit">
-        <button onClick={checkAnswers}>Check answers</button>
-      </div>
+      {!concludeGame && (
+        <div className="quiz-submit">
+          <button onClick={checkAnswers}>Check answers</button>
+        </div>
+      )}
+      {concludeGame && (
+        <div className="quiz-submit">
+          You scored {quiz.filter((q) => q.selected === q.correctAnswer).length}
+          /5 corrent answers. <button onClick={restartGame}>Play again</button>
+        </div>
+      )}
     </div>
   );
 }
