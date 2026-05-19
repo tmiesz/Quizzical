@@ -3,17 +3,15 @@ import clsx from "clsx";
 import { useMemo } from "react";
 
 export type QuizProps = {
-  answerIds: string[];
   question: string;
   correctAnswer: string;
   answers: string[];
-  selected: string | null;
-  style: "select" | "correct" | "wrong" | null;
-  selectAnswer: (id: string) => void;
+  selected?: string;
+  style?: "select" | "correct" | "wrong";
+  selectAnswer: (id: string) => boolean;
 };
 
 export default function QuizCard({
-  answerIds,
   question,
   correctAnswer,
   answers,
@@ -33,9 +31,9 @@ export default function QuizCard({
       <div className="quiz-answers">
         {Array.from({ length: numberOfAnswers }, (_, i) => (
           <button
-            key={answerIds[i]}
-            className={clsx(selected === answerIds[i] ? style : "")}
-            onClick={() => selectAnswer(answerIds[i])}
+            key={answers[i]}
+            className={clsx(selected === answers[i] ? style : "")}
+            onClick={() => selectAnswer(answers[i])}
           >
             {i === correctAnswerPosition
               ? decode(correctAnswer)
