@@ -22,6 +22,7 @@ function App() {
     (q) => (q.selected && q.style === "correct") || q.style === "wrong",
   );
 
+  //TODO: BUG this breaks if two questions have the same answer text
   function selectAnswer(answer: string) {
     setQuiz((prev) =>
       prev.map((q) =>
