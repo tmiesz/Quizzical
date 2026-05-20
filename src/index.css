@@ -9,6 +9,27 @@
     background-color: var(--color-dark);
 }
 
+.home-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: var(--color-green);
+    font-size: 1.5rem;
+    gap: 3rem;
+}
+.start-quiz {
+    color: var(--color-dark);
+    background-color: var(--color-white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    text-decoration: none;
+}
+
 .quiz {
     display: flex;
     flex-direction: column;
