@@ -9,6 +9,16 @@
     background-color: var(--color-dark);
 }
 
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+}
+
 .home-page {
     display: flex;
     flex-direction: column;
