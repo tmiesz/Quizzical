@@ -38,7 +38,9 @@ export default function QuizCard({
           return (
             <button
               key={answerId}
-              className={clsx(selected === answerId ? style : "")}
+              className={
+                "quiz-answers-button" + clsx(selected === answerId ? style : "")
+              }
               onClick={() => selectAnswer(answerId)}
             >
               {decode(answerId)}

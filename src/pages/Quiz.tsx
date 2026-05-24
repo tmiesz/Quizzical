@@ -62,13 +62,18 @@ function Quiz() {
       ))}
       {!concludeGame && (
         <div className="quiz-submit">
-          <button onClick={checkAnswers}>Check answers</button>
+          <button className="quiz-submit-button" onClick={checkAnswers}>
+            Check answers
+          </button>
         </div>
       )}
       {concludeGame && (
         <div className="quiz-submit">
           You scored {quiz.filter((q) => q.selected === q.correctAnswer).length}
-          /5 corrent answers. <button onClick={restartGame}>Play again</button>
+          /5 corrent answers.{" "}
+          <button className="quiz-submit-button" onClick={restartGame}>
+            Play again
+          </button>
         </div>
       )}
     </div>
